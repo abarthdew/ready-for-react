@@ -35,7 +35,7 @@ function App() {
   }
 
   const deleteTodo = (id) => {
-    setTodos((prev) => prev.map((todo) => (todo.id === id ? {...todo, done: !todo.done} : todo)))
+    setTodos((prev) => prev.filter((todo) => todo.id !== id))
   }
 
   const doneCount = todos.filter((todo) => todo.done).length
@@ -54,7 +54,7 @@ function App() {
         <section className="filter-group" aria-label="todo filter">
           <button type="button" onClick={() => setFilter('all')} className={filter === 'all' ? 'active' : ''}>ALL</button>
           <button type="button" onClick={() => setFilter('active')} className={filter === 'active' ? 'active' : ''}>ACTIVE</button>
-          <button type="button" onClick={() => setFilter('done')} className={filter === 'active' ? 'active' : ''}>DONE</button>
+          <button type="button" onClick={() => setFilter('done')} className={filter === 'done' ? 'active' : ''}>DONE</button>
         </section>
 
         <TodoList todos={filteredTodos} onToggle={toggleTodo} onDelete={deleteTodo} />
