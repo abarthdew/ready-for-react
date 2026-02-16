@@ -1,14 +1,34 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import './App.css'
 import TodoForm from '@/components/TodoForm'
 import TodoList from '@/components/TodoList'
 
-function App() {
-  const [todos, setTodos] = useState([
-    { id: 1, text: 'understanding for React component structures', done: false},
+const STORAGE_KEY = 'react-todo.todos'
+const DEFAULT_TODOS = [
+  { id: 1, text: 'understanding for React component structures', done: false},
     { id: 2, text: 're-practicing about state/props processing', done: true }
-  ])
+]
+
+
+function App() {
+  const [todos, setTodos] = useState(() => {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY)
+      if (!stored) return DEFAULT_TODOS
+
+      const parsed = JSON.parse(stored)
+      if (!Array.isArray(parsed)) return DEFAULT_TODOS
+      return parsed
+    } catch {
+      return DEFAULT_TODOS
+    }
+  })
+
   const [filter, setFilter] = useState('all')
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(todos))
+  }, [todos])
 
   const filteredTodos = useMemo(() => {
     if (filter === 'active') return todos.filter((todo) => !todo.done)
