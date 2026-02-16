@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 export default function TodoForm({onAdd}){
-    const [text, setText] = useSTate('')
+    const [text, setText] = useState('')
 
     const submitTodo = (event)=> {
         event.preventDefault()
