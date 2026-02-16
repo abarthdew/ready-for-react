@@ -6,7 +6,7 @@ import TodoList from '@/components/TodoList'
 const STORAGE_KEY = 'react-todo.todos'
 const DEFAULT_TODOS = [
   { id: 1, text: 'understanding for React component structures', done: false},
-    { id: 2, text: 're-practicing about state/props processing', done: true }
+  { id: 2, text: 're-practicing about state/props processing', done: true }
 ]
 
 
