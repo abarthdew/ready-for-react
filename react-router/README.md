@@ -1,18 +1,26 @@
-# React + Vite
+# react-router
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+`react-etc`보다 더 복잡한 학습용 실무 프로토타입 React 앱입니다.
 
-Currently, two official plugins are available:
+## 핵심 학습 포인트
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- `routes/` 폴더에서 라우트 모듈 분리
+  - `authRoutes`
+  - `projectRoutes` (nested)
+  - `userRoutes`
+- `api/` 폴더에서 도메인별 API 분리
+  - `projectsApi`, `tasksApi`, `usersApi`
+- 실제 서버처럼 동작하는 `mockServer`
+  - localStorage에 DB를 저장
+  - 비동기 지연(delay)로 네트워크 느낌 재현
+- 라우트/기능별 CRUD
+  - Projects: 생성/목록/수정/삭제
+  - Tasks(by Project): 생성/상태변경/삭제
+  - Users: 생성/역할수정/삭제
 
-## React Compiler
+## 실행
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+npm run dev
+```
