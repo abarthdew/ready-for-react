@@ -7,7 +7,7 @@ import DashboardPage from '@/pages/DashboardPage'
 import NotFoundPage from '@/pages/NotFoundPage'
 
 // context 값 확인해보기
-import { AuthContext } from '../features/auth/AuthContext'
+import { AuthProvider, useAuth } from '../features/auth/AuthContext'
 import { useContext } from 'react'
 
 const router = createBrowserRouter([
@@ -26,8 +26,14 @@ const router = createBrowserRouter([
 
 export default function AppRouter() {
 
-  const auth = useContext(AuthContext)
-  console.log(auth) // context 값 확인해보기
+  // context 값 확인해보기
+  const auth1 = useContext(AuthProvider) 
+  console.log('auth1', auth1) 
+  // -> 잘못된 방법: AuthProvider는 그냥 provider 컴포넌트고, AuthContext가 context 객체임.
+
+  // 다른 방법
+  const auth2 = useAuth();
+  console.log('auth2', auth2)
 
   return <RouterProvider router={router} />
 }
