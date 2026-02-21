@@ -6,6 +6,10 @@ import RootLayout from '@/layouts/RootLayout'
 import DashboardPage from '@/pages/DashboardPage'
 import NotFoundPage from '@/pages/NotFoundPage'
 
+// context 값 확인해보기
+import { AuthContext } from '../features/auth/AuthContext'
+import { useContext } from 'react'
+
 const router = createBrowserRouter([
   ...authRoutes,
   {
@@ -21,5 +25,9 @@ const router = createBrowserRouter([
 ])
 
 export default function AppRouter() {
+
+  const auth = useContext(AuthContext)
+  console.log(auth) // context 값 확인해보기
+
   return <RouterProvider router={router} />
 }
