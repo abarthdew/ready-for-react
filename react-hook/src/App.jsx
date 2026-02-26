@@ -44,6 +44,7 @@ export default function App() {
           <button type="button" onClick={saveProfile}>Save</button>
         </div>
       </section>
+      <br/>
 
       <div className="grid-2">
         <TaskReducerPanel onAdd={handleTaskAdd} onToggle={handleTaskToggle} onRemove={handleTaskRemove} />
