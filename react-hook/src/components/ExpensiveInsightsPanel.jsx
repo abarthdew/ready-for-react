@@ -4,10 +4,10 @@ console.log('component render')
 function calculateInsights(size) {
   let score = 0
   for (let i = 0; i < 200000; i += 1) { 
-    console.log(size, i)
+    // console.log(size, i)
     score += (i * 13) % 7
   }
-  console.log(score, score % 10)
+  // console.log(score, score % 10)
   return { score: score % 10, recommendation: size > 3 ? 'Split by domain' : 'Keep simple' }
 }
 
